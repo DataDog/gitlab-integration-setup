@@ -65,7 +65,7 @@ For the shell snippets & scripts below, please configure the following environme
 | DD_DOMAIN          | Custom datadog domain (if applicable), or the datadog app domain for your site                                                                   | `app.datadoghq.com`,  `us3.datadoghq.com`,  `my-company.datadoghq.com` |
 | GITLAB_ADMIN_TOKEN | Your personal access token, as group Owner or instance admin                                                                                     | `glpat-AsDf-********`                                                  |
 | GITLAB_HOSTNAME    | Your GitLab instance hostname                                                                                                                    | `gitlab.com`, `gitlab.my-company.com`                                  |
-| GITLAB_GROUP_ID    | The ID of the top-level GitLab group (only required for GitLab.com). Can be retrieved from the group homepage: #                                 | `2400579`                                                              |
+| GITLAB_GROUP_ID    | The ID of the top-level GitLab group (only required for GitLab.com). It can be retrieved from the group homepage: ![Retrieving the group ID](img/retrieve-group-id.png)                                 | `2400579`                                                              |
 | ORG_NAME           | Your organization name. Only required to uniquely name the service account for GitLab.com groups, which have to be unique on the GitLab instance | `ACME Corp`                                                            |
 
 ### Webhooks
@@ -80,7 +80,7 @@ Running the following shell snippet will create a webhook on a group, with the f
 **WARNING: Don’t select Pipeline events or Job events, this would enable the CI Visibility product, which has billing implications.**
 
 For **GitLab.com**, please run the following once with your top-level `GITLAB_GROUP_ID`.
-For **Self Managed & Dedicated**, please run it with a different `GITLAB_GROUP_ID` for each GitLab group you want to integrate.
+For **Self Managed & Dedicated**, please run it with a different `GITLAB_GROUP_ID` for each GitLab group you want to integrate. This uses this [GitLab API endpoint](https://docs.gitlab.com/ee/api/group_webhooks.html)
 
 ```sh
 # Registers a group webhook: https://docs.gitlab.com/ee/api/group_webhooks.html
@@ -108,17 +108,30 @@ First, you’ll need to **follow the steps here** to allow non-expiring tokens t
 
 Please review and run the following script:
 ```sh
-./create-service-account-gitlab-com.sh
+./create-serviceaccount-gitlab-com.sh
 ```
 
 #### GitLab Self Managed & Dedicated
 
 Please review and run the following script:
 ```sh
-./create-service-account-self-managed.sh
+./create-serviceaccount-self-managed.sh
 ```
 
-## OAuth2 application
+You'll then need to add the Service Account with at least **Reporter** role in the groups and projects that you want Datadog to have access to:
+- Click `Members` in the group panel
+
+ ![Members menu](img/menu-members.png)
+
+- Click the `Invite Members` button on the top-right
+
+ ![Members button](img/invite-members.png)
+
+- Look for the Service Account user, and add it with **Reporter** role. You can find the Service Account name and username in the output of the previous script.
+
+ ![Members modal](img/invite-modal.png)
+
+### OAuth2 application
 
 This step is **only required for Self Managed & Dedicated**. It creates an OAuth2 application on your instance, which will be controlled by Datadog to let your users authorize access to certain resources (e.g. code snippets).
 
