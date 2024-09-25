@@ -65,7 +65,7 @@ For the shell snippets & scripts below, please configure the following environme
 | DD_DOMAIN          | Custom datadog domain (if applicable), or the datadog app domain for your site                                                                   | `app.datadoghq.com`,  `us3.datadoghq.com`,  `my-company.datadoghq.com` |
 | GITLAB_ADMIN_TOKEN | Your personal access token, as group Owner or instance admin                                                                                     | `glpat-AsDf-********`                                                  |
 | GITLAB_HOSTNAME    | Your GitLab instance hostname                                                                                                                    | `gitlab.com`, `gitlab.my-company.com`                                  |
-| GITLAB_GROUP_ID    | The ID of the top-level GitLab group (only required for GitLab.com). It be retrieved from the group homepage: ![Retrieving the group ID](img/retrieve-group-id.png)                                 | `2400579`                                                              |
+| GITLAB_GROUP_ID    | The ID of the top-level GitLab group (only required for GitLab.com). It can be retrieved from the group homepage: ![Retrieving the group ID](img/retrieve-group-id.png)                                 | `2400579`                                                              |
 | ORG_NAME           | Your organization name. Only required to uniquely name the service account for GitLab.com groups, which have to be unique on the GitLab instance | `ACME Corp`                                                            |
 
 ### Webhooks
