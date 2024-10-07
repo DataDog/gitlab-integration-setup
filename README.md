@@ -2,6 +2,8 @@
 
 ## Introduction
 
+**NOTE:** Datadog's GitLab integration is currently in a closed preview, to request access for your organization please reach out to [Datadog Support](https://www.datadoghq.com/support/)
+
 This document will guide you through the different elements of configuration to integrate your Datadog account with your GitLab instance or account.
 
 This integration requires configuring:
