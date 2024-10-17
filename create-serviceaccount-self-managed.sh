@@ -46,7 +46,7 @@ echo "Successfully generated token $(echo "$TOKEN_RESP" | jq -r '.name') with ID
 
 # Register the access token in Datadog. This will allow Datadog to call your GitLab instance's API on behalf of
 # the service account.
-if ! DD_RESP=`curl -sS --fail-with-body -X POST https://$DD_SITE/api/v2/source-code/gitlab/tokens
+if ! DD_RESP=`curl -sS --fail-with-body -X POST https://$DD_SITE/api/v2/source-code/gitlab/tokens \
     -H "Content-Type: application/json" \
     -H "DD-API-KEY: $DD_API_KEY" \
     -H "DD-APPLICATION-KEY: $DD_APPLICATION_KEY" \
