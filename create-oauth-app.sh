@@ -38,7 +38,7 @@ APP_NAME=`echo "$APP_RESP" | jq -r '.application_name'`
 echo "Successfully created OAuth app $APP_NAME with ID $CLIENT_ID"
 
 # Register the app in Datadog's integration endpoint
-if ! DD_RESP=`curl -sS --fail-with-body -X POST https://$DD_SITE/api/v2/source-code/gitlab/oauth-apps \
+if ! DD_RESP=`curl -sS --fail-with-body -X POST https://api.$DD_SITE/api/v2/source-code/gitlab/oauth-apps \
   -H "Content-Type: application/json" \
   -H "DD-API-KEY: $DD_API_KEY" \
   -H "DD-APPLICATION-KEY: $DD_APPLICATION_KEY" \
