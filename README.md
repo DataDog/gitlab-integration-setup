@@ -72,6 +72,14 @@ For the shell snippets & scripts below, please configure the following environme
 
 ### Webhooks
 
+#### **GitLab.com** and **Self Managed & Dedicated >= 17.7**
+
+You can configure webhooks at the project, group or instance level by following [these instructions](https://docs.gitlab.com/ee/integration/datadog.html).
+Enabling CI Visibility isn't required here. Be wary that enabling it might impact your Datadog bill.
+
+#### Self Managed & Dedicated < 17.7
+
+For these versions of GitLab, webhooks have to be setup manually.
 Running the following shell snippet will create a webhook on a group, with the following configuration:
 
 * **URL**: `https://webhook-intake.<DATADOG_SITE>/api/v2/webhook`
@@ -81,8 +89,7 @@ Running the following shell snippet will create a webhook on a group, with the f
 
 **WARNING: Don’t select Pipeline events or Job events, this would enable the CI Visibility product, which has billing implications.**
 
-For **GitLab.com**, please run the following once with your top-level `GITLAB_GROUP_ID`.
-For **Self Managed & Dedicated**, please run it with a different `GITLAB_GROUP_ID` for each GitLab group you want to integrate. This uses this [GitLab API endpoint](https://docs.gitlab.com/ee/api/group_webhooks.html)
+Please run it with a different `GITLAB_GROUP_ID` for each GitLab group you want to integrate. This uses this [GitLab API endpoint](https://docs.gitlab.com/ee/api/group_webhooks.html)
 
 ```sh
 # Registers a group webhook: https://docs.gitlab.com/ee/api/group_webhooks.html
