@@ -32,7 +32,7 @@ SA_NAME=`echo "$SA_RESP" | jq -r '.name'`
 echo "Successfully created service account $SA_NAME with ID $SA_ID."
 
 # Generate an access token for the service account. This access token will be sent to Datadog in the next step.
-if ! TOKEN_RESP=`curl -sS --fail-with-body -X POST "https://$GITLAB_HOSTNAME/api/v4/service_accounts/$SA_ID/personal_access_tokens" \
+if ! TOKEN_RESP=`curl -sS --fail-with-body -X POST "https://$GITLAB_HOSTNAME/api/v4/users/$SA_ID/personal_access_tokens" \
     -H "Content-Type: application/json" \
     -H "PRIVATE-TOKEN: $GITLAB_ADMIN_TOKEN" \
     -d "{
