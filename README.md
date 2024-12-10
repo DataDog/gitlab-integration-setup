@@ -55,6 +55,17 @@ Installing the integration will require some calls to Datadog’s API, for which
 
 **Please generate an [API key](https://docs.datadoghq.com/account_management/api-app-keys/) *dedicated to the GitLab integration*; it will be used by your GitLab instance to authenticate webhooks sent to Datadog, and revoking it will break the integration.**
 
+### Script dependencies
+
+The execution of the scripts in this repository requires the installation of the following packages:
+* `coreutils`
+* `jq`
+* `curl`
+
+Example installation oneliners:
+* `brew install coreutils jq curl` (macOS)
+* `apt-get install coreutils jq curl` (Ubuntu)
+
 ## Installation
 
 For the shell snippets & scripts below, please configure the following environment variables:
