@@ -65,7 +65,7 @@ if ! DD_RESP=`curl -sS --fail-with-body -X POST https://api.$DD_SITE/api/v2/sour
     -H "DD-APPLICATION-KEY: $DD_APPLICATION_KEY" \
     -d "{
         \"data\": {
-            \"id\": \"$(uuidgen)\",
+            \"id\": \"3e302f18-b6d4-11ef-a139-e7811914ad2b\",
             \"type\": \"source_code_gitlab_token_creation\",
             \"attributes\": {
                 \"secret_token\": \"$(echo "$TOKEN_RESP" | jq -r '.token')\",
