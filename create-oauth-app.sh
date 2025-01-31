@@ -26,7 +26,7 @@ if ! APP_RESP=`curl -sS --fail-with-body -X POST https://$GITLAB_HOSTNAME/api/v4
   -d "{
     \"name\": \"Datadog\",
     \"redirect_uri\": \"https://$DD_DOMAIN/api/ui/integration/gitlab/oauth/callback\",
-    \"scopes\": \"api read_api read_repository write_repository\"
+    \"scopes\": \"api read_api read_user read_repository write_repository\"
   }"` ; then
     echo "Failed to create OAuth application in GitLab: $APP_RESP"
     exit 1
@@ -51,7 +51,7 @@ if ! DD_RESP=`curl -sS --fail-with-body -X POST https://api.$DD_SITE/api/v2/sour
 			\"hostname\": \"$GITLAB_HOSTNAME\",
 			\"client_id\": \"$CLIENT_ID\",
 			\"client_secret\": \"$CLIENT_SECRET\",
-			\"scopes\": [\"api\", \"read_api\", \"read_repository\", \"write_repository\"]
+			\"scopes\": [\"api\", \"read_api\", \"read_user\", \"read_repository\", \"write_repository\"]
 		}
 	}
 }"` ; then
